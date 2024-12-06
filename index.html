@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub Gang Del Benny's</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 70px;
+            background-color: #000;
+            color: white;
+            text-align: start;
+            background-image: url('https://cdn.discordapp.com/attachments/1314180428420354070/1314186366405316671/cool-red-skull-on-black-ixfydjkx0zan0hfm.jpg?ex=6752daee&is=6751896e&hm=e3fec95da1e5516961e745fc1c27f2f2a70249034112e781f2bd5598373c0b40&'); /* Aggiungi il link per l'immagine di sfondo */
+            background-size: cover;
+            background-position: center;
+        }
+        header {
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            margin: 20px;
+        }
+        .section {            
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: rgb(255, 255, 255);
+        }
+        textarea {
+            width: 25%;
+            height: 50px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }        
+        .logo {
+            position: absolute;
+            top: 0px;  /* Spazio dal bordo superiore */
+            left: 50%;  /* Posiziona il logo a metà larghezza della finestra */
+            transform: translateX(-50%);  /* Sposta il logo indietro di metà della sua larghezza per centrarlo */
+            width: 100px;  /* Imposta la larghezza del logo */
+        }   
+        button {
+            padding: 10px 20px;
+            background-color: transparent;  /* Sfondo trasparente */
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }       
+        .soldi-container {
+        position: absolute;
+        top: 20px;   /* Distanza dalla parte superiore */
+        right: 20px; /* Distanza dal lato destro */
+        text-align: right; /* Allineamento del testo a destra */
+        }
+        input[type="number"] { 
+        padding: 5px;
+        width: 120px;
+        border-radius: 5px;
+        border: 1px solid #ddd;  /* Bordi dell'input */
+        color: white;  /* Cambia il testo a bianco */
+        background-color: transparent;  /* Lo sfondo rimane trasparente */
+    }                   
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hub Gang Del Benny's</h1>
+    </header>
+
+    <!-- Logo -->
+    <img src="https://cdn.discordapp.com/attachments/1314180428420354070/1314340727328870500/IMG_6441-removebg-preview.png?ex=67536ab0&is=67521930&hm=65996c132004e7d0ea59964d7ec16e034a72526e227ac607209a54e8208e2e79&" alt="Logo" class="logo">
+    
+<!-- INIZIO TABELLA LISTINO PREZZI -->
+<div class="content">
+  <h1></h1>
+  <table border="1">
+      <tr>
+          <th>Listino Prezzi</th>
+          <th>Prezzo Base</th>
+          <th>Quantità</th>
+          <th>Totale</th>
+      </tr>
+      <!-- 9mm -->
+      <tr>
+          <td>9mm</td>
+          <td><input type="text" id="prezzoBase1" value="70000" onchange="calcolaTotale(1)" /></td>
+          <td><input type="number" id="quantita1" value="1" onchange="calcolaTotale(1)" /></td>
+          <td><input type="text" id="totale1" value="70.000" readonly /></td>
+      </tr>
+      <!-- Mk2 -->
+      <tr>
+          <td>Mk2</td>
+          <td><input type="text" id="prezzoBase2" value="80000" onchange="calcolaTotale(2)" /></td>
+          <td><input type="number" id="quantita2" value="1" onchange="calcolaTotale(2)" /></td>
+          <td><input type="text" id="totale2" value="80.000" readonly /></td>
+      </tr>
+      <!-- P90 -->
+      <tr>
+        <td>P90</td>
+        <td><input type="text" id="prezzoBase3" value="110000" onchange="calcolaTotale(3)" /></td>
+        <td><input type="number" id="quantita3" value="1" onchange="calcolaTotale(3)" /></td>
+        <td><input type="text" id="totale3" value="110.000" readonly /></td>
+    </tr>
+      <!-- Colpi 9mm -->
+      <tr>
+        <td>Colpi 9mm</td>
+        <td><input type="text" id="prezzoBase4" value="200" onchange="calcolaTotale(4)" /></td>
+        <td><input type="number" id="quantita4" value="1" onchange="calcolaTotale(4)" /></td>
+        <td><input type="text" id="totale4" value="200" readonly /></td>
+    </tr>
+       <!-- Colpi 5.56 -->
+       <tr>
+        <td>Colpi 5.56</td>
+        <td><input type="text" id="prezzoBase5" value="300" onchange="calcolaTotale(5)" /></td>
+        <td><input type="number" id="quantita5" value="1" onchange="calcolaTotale(5)" /></td>
+        <td><input type="text" id="totale5" value="300" readonly /></td>
+    </tr>
+       <!-- Accessori -->
+       <tr>
+         <td>Accessori</td>
+         <td><input type="text" id="prezzoBase6" value="5000" onchange="calcolaTotale(6)" /></td>
+         <td><input type="number" id="quantita6" value="1" onchange="calcolaTotale(6)" /></td>
+         <td><input type="text" id="totale6" value="5.000" readonly /></td>
+     </tr>
+         <!-- Forbici -->
+      <tr>
+        <td>Forbici</td>
+        <td><input type="text" id="prezzoBase7" value="750" onchange="calcolaTotale(7)" /></td>
+        <td><input type="number" id="quantita7" value="1" onchange="calcolaTotale(7)" /></td>
+        <td><input type="text" id="totale7" value="750" readonly /></td>
+    </tr>
+         <!-- Pala -->
+      <tr>
+         <td>Pala</td>
+         <td><input type="text" id="prezzoBase8" value="750" onchange="calcolaTotale(8)" /></td>
+         <td><input type="number" id="quantita8" value="1" onchange="calcolaTotale(8)" /></td>
+         <td><input type="text" id="totale8" value="750" readonly /></td>
+    </tr>
+    <!-- Concime -->
+    <tr>
+      <td>Concime</td>
+      <td><input type="text" id="prezzoBase9" value="400" onchange="calcolaTotale(9)" /></td>
+      <td><input type="number" id="quantita9" value="1" onchange="calcolaTotale(9)" /></td>
+      <td><input type="text" id="totale9" value="400" readonly /></td>
+  </tr>
+    <!-- Annaffiatoio -->
+    <tr>
+      <td>Annaffiatoio</td>
+      <td><input type="text" id="prezzoBase10" value="400" onchange="calcolaTotale(10)" /></td>
+      <td><input type="number" id="quantita10" value="1" onchange="calcolaTotale(10)" /></td>
+      <td><input type="text" id="totale10" value="400" readonly /></td>
+  </tr>
+     <!-- Seme Cocaina -->
+     <tr>
+      <td>Seme Cocaina</td>
+      <td><input type="text" id="prezzoBase11" value="750" onchange="calcolaTotale(11)" /></td>
+      <td><input type="number" id="quantita11" value="1" onchange="calcolaTotale(11)" /></td>
+      <td><input type="text" id="totale11" value="750" readonly /></td>
+  </tr>
+     <!-- Reagente -->
+     <tr>
+       <td>Reagente</td>
+       <td><input type="text" id="prezzoBase12" value="2000" onchange="calcolaTotale(12)" /></td>
+       <td><input type="number" id="quantita12" value="1" onchange="calcolaTotale(12)" /></td>
+       <td><input type="text" id="totale12" value="3.000" readonly /></td>
+   </tr>
+        <!-- Riga Totale Complessivo -->
+        <tr>
+          <td colspan="3"><strong>Totale Complessivo</strong></td>
+          <td><input type="text" id="totaleComplessivo" value="0" readonly /></td>
+      </tr>  
+  </table>
+</div>
+
+<!-- Aggiungi il codice JavaScript per calcolare e salvare i dati -->
+<script>
+// Funzione per calcolare il totale, accetta un parametro per identificare la riga
+function calcolaTotale(id) {
+    var prezzoBase = parseFloat(document.getElementById("prezzoBase" + id).value);
+    var quantita = parseInt(document.getElementById("quantita" + id).value);
+    
+    // Calcola il totale
+    var totale = prezzoBase * quantita;
+    
+    // Formatta il totale con separatori delle migliaia (in stile italiano)
+    var totaleFormattato = totale.toLocaleString('it-IT'); // Usa la formattazione italiana
+    
+    // Imposta il totale formattato nella colonna Totale
+    document.getElementById("totale" + id).value = totaleFormattato;
+    
+    // Ricalcola il totale complessivo ogni volta che un totale riga cambia
+    calcolaTotaleComplessivo();
+    
+    // Salva i dati nel localStorage
+    salvaDati();
+}
+
+// Funzione per calcolare il totale complessivo di tutte le righe
+// Funzione per calcolare il totale complessivo di tutte le righe
+function calcolaTotaleComplessivo() {
+    // Inizializza il totale complessivo
+    var totaleComplessivo = 0;
+    
+    // Somma i totali di tutte le righe
+    for (var i = 1; i <= 12; i++) { // Ora considerando 12 righe
+        var totale = parseFloat(document.getElementById("totale" + i).value.replace(/\./g, '').replace(",", "."));
+        if (!isNaN(totale)) {
+            totaleComplessivo += totale;
+        }
+    }
+    
+    // Formatta il totale complessivo
+    var totaleComplessivoFormattato = totaleComplessivo.toLocaleString('it-IT');
+    
+    // Imposta il totale complessivo nel campo
+    document.getElementById("totaleComplessivo").value = totaleComplessivoFormattato;
+}
+
+// Funzione per salvare i dati nel localStorage
+function salvaDati() {
+    var prezzoBase1 = document.getElementById("prezzoBase1").value;
+    var quantita1 = document.getElementById("quantita1").value;
+    var totale1 = document.getElementById("totale1").value;
+
+    var prezzoBase2 = document.getElementById("prezzoBase2").value;
+    var quantita2 = document.getElementById("quantita2").value;
+    var totale2 = document.getElementById("totale2").value;
+
+    var prezzoBase3 = document.getElementById("prezzoBase3").value;
+    var quantita3 = document.getElementById("quantita3").value;
+    var totale3 = document.getElementById("totale3").value;
+
+    var prezzoBase4 = document.getElementById("prezzoBase4").value;
+    var quantita4 = document.getElementById("quantita4").value;
+    var totale4 = document.getElementById("totale4").value;
+
+    var prezzoBase5 = document.getElementById("prezzoBase5").value;
+    var quantita5 = document.getElementById("quantita5").value;
+    var totale5 = document.getElementById("totale5").value;
+
+    var prezzoBase6 = document.getElementById("prezzoBase6").value;
+    var quantita6 = document.getElementById("quantita6").value;
+    var totale6 = document.getElementById("totale6").value;
+
+    var prezzoBase7 = document.getElementById("prezzoBase7").value;
+    var quantita7 = document.getElementById("quantita7").value;
+    var totale7 = document.getElementById("totale7").value;
+
+    var prezzoBase8 = document.getElementById("prezzoBase8").value;
+    var quantita8 = document.getElementById("quantita8").value;
+    var totale8 = document.getElementById("totale8").value;
+
+    var prezzoBase9 = document.getElementById("prezzoBase9").value;
+    var quantita9 = document.getElementById("quantita9").value;
+    var totale9 = document.getElementById("totale9").value;
+
+    var prezzoBase10 = document.getElementById("prezzoBase10").value;
+    var quantita10 = document.getElementById("quantita10").value;
+    var totale10 = document.getElementById("totale10").value;
+
+    var prezzoBase11 = document.getElementById("prezzoBase11").value;
+    var quantita11 = document.getElementById("quantita11").value;
+    var totale11 = document.getElementById("totale11").value;
+
+    var prezzoBase12 = document.getElementById("prezzoBase12").value;
+    var quantita12 = document.getElementById("quantita12").value;
+    var totale12 = document.getElementById("totale12").value;
+  
+    // Salva i dati per ogni articolo
+    localStorage.setItem("prezzoBase1", document.getElementById("prezzoBase1").value);
+    localStorage.setItem("quantita1", document.getElementById("quantita1").value);
+    localStorage.setItem("totale1", document.getElementById("totale1").value);
+
+    localStorage.setItem("prezzoBase2", document.getElementById("prezzoBase2").value);
+    localStorage.setItem("quantita2", document.getElementById("quantita2").value);
+    localStorage.setItem("totale2", document.getElementById("totale2").value);
+
+    localStorage.setItem("prezzoBase3", document.getElementById("prezzoBase3").value);
+    localStorage.setItem("quantita3", document.getElementById("quantita3").value);
+    localStorage.setItem("totale3", document.getElementById("totale3").value);
+
+    localStorage.setItem("prezzoBase4", document.getElementById("prezzoBase4").value);
+    localStorage.setItem("quantita4", document.getElementById("quantita4").value);
+    localStorage.setItem("totale4", document.getElementById("totale4").value);
+
+    localStorage.setItem("prezzoBase5", document.getElementById("prezzoBase5").value);
+    localStorage.setItem("quantita5", document.getElementById("quantita5").value);
+    localStorage.setItem("totale5", document.getElementById("totale5").value);
+
+    localStorage.setItem("prezzoBase6", document.getElementById("prezzoBase6").value);
+    localStorage.setItem("quantita6", document.getElementById("quantita6").value);
+    localStorage.setItem("totale6", document.getElementById("totale6").value);
+
+    localStorage.setItem("prezzoBase7", prezzoBase7);
+    localStorage.setItem("quantita7", quantita7);
+    localStorage.setItem("totale7", totale7);
+
+    localStorage.setItem("prezzoBase8", prezzoBase8);
+    localStorage.setItem("quantita8", quantita8);
+    localStorage.setItem("totale8", totale8);
+
+    localStorage.setItem("prezzoBase9", prezzoBase9);
+    localStorage.setItem("quantita9", quantita9);
+    localStorage.setItem("totale9", totale9);
+
+    localStorage.setItem("prezzoBase10", prezzoBase10);
+    localStorage.setItem("quantita10", quantita10);
+    localStorage.setItem("totale10", totale10);
+
+    localStorage.setItem("prezzoBase11", prezzoBase11);
+    localStorage.setItem("quantita11", quantita11);
+    localStorage.setItem("totale11", totale11);
+
+    localStorage.setItem("prezzoBase12", prezzoBase12);
+    localStorage.setItem("quantita12", quantita12);
+    localStorage.setItem("totale12", totale12);
+    
+    // Salva il totale complessivo
+    localStorage.setItem("totaleComplessivo", document.getElementById("totaleComplessivo").value);
+}
+
+// Funzione per caricare i dati dal localStorage
+function caricaDati() {
+    // Carica i dati per ogni articolo
+    var prezzoBase1 = localStorage.getItem("prezzoBase1");
+    var quantita1 = localStorage.getItem("quantita1");
+    var totale1 = localStorage.getItem("totale1");
+
+    var prezzoBase2 = localStorage.getItem("prezzoBase2");
+    var quantita2 = localStorage.getItem("quantita2");
+    var totale2 = localStorage.getItem("totale2");
+
+    var prezzoBase3 = localStorage.getItem("prezzoBase3");
+    var quantita3 = localStorage.getItem("quantita3");
+    var totale3 = localStorage.getItem("totale3");
+
+    var prezzoBase4 = localStorage.getItem("prezzoBase4");
+    var quantita4 = localStorage.getItem("quantita4");
+    var totale4 = localStorage.getItem("totale4");
+
+    var prezzoBase5 = localStorage.getItem("prezzoBase5");
+    var quantita5 = localStorage.getItem("quantita5");
+    var totale5 = localStorage.getItem("totale5");
+
+    var prezzoBase6 = localStorage.getItem("prezzoBase6");
+    var quantita6 = localStorage.getItem("quantita6");
+    var totale6 = localStorage.getItem("totale6");
+
+    var prezzoBase7 = localStorage.getItem("prezzoBase7");
+    var quantita7 = localStorage.getItem("quantita7");
+    var totale7 = localStorage.getItem("totale7");
+
+    var prezzoBase8 = localStorage.getItem("prezzoBase8");
+    var quantita8 = localStorage.getItem("quantita8");
+    var totale8 = localStorage.getItem("totale8");
+
+    var prezzoBase9 = localStorage.getItem("prezzoBase9");
+    var quantita9 = localStorage.getItem("quantita9");
+    var totale9 = localStorage.getItem("totale9");
+
+    var prezzoBase10 = localStorage.getItem("prezzoBase10");
+    var quantita10 = localStorage.getItem("quantita10");
+    var totale10 = localStorage.getItem("totale10");
+
+    var prezzoBase11 = localStorage.getItem("prezzoBase11");
+    var quantita11 = localStorage.getItem("quantita11");
+    var totale11 = localStorage.getItem("totale11");
+
+    var prezzoBase12 = localStorage.getItem("prezzoBase12");
+    var quantita12 = localStorage.getItem("quantita12");
+    var totale12 = localStorage.getItem("totale12");
+
+    // Se i dati sono nel localStorage, caricali
+    if (prezzoBase1 && quantita1 && totale1) {
+        document.getElementById("prezzoBase1").value = prezzoBase1;
+        document.getElementById("quantita1").value = quantita1;
+        document.getElementById("totale1").value = totale1;
+    }
+    if (prezzoBase2 && quantita2 && totale2) {
+        document.getElementById("prezzoBase2").value = prezzoBase2;
+        document.getElementById("quantita2").value = quantita2;
+        document.getElementById("totale2").value = totale2;
+    }
+    if (prezzoBase3 && quantita3 && totale3) {
+        document.getElementById("prezzoBase3").value = prezzoBase3;
+        document.getElementById("quantita3").value = quantita3;
+        document.getElementById("totale3").value = totale3;
+    }
+    if (prezzoBase4 && quantita4 && totale4) {
+        document.getElementById("prezzoBase4").value = prezzoBase4;
+        document.getElementById("quantita4").value = quantita4;
+        document.getElementById("totale4").value = totale4;
+    }
+    if (prezzoBase5 && quantita5 && totale5) {
+        document.getElementById("prezzoBase5").value = prezzoBase5;
+        document.getElementById("quantita5").value = quantita5;
+        document.getElementById("totale5").value = totale5;
+    }
+    if (prezzoBase6 && quantita6 && totale6) {
+        document.getElementById("prezzoBase6").value = prezzoBase6;
+        document.getElementById("quantita6").value = quantita6;
+        document.getElementById("totale6").value = totale6;
+    }
+
+    if (prezzoBase7 && quantita7 && totale7) {
+            document.getElementById("prezzoBase7").value = prezzoBase7;
+            document.getElementById("quantita7").value = quantita7;
+            document.getElementById("totale7").value = totale7;
+        }
+
+        if (prezzoBase8 && quantita8 && totale8) {
+            document.getElementById("prezzoBase8").value = prezzoBase8;
+            document.getElementById("quantita8").value = quantita8;
+            document.getElementById("totale8").value = totale8;
+        }
+
+        if (prezzoBase9 && quantita9 && totale9) {
+            document.getElementById("prezzoBase9").value = prezzoBase9;
+            document.getElementById("quantita9").value = quantita9;
+            document.getElementById("totale9").value = totale9;
+        }
+
+        if (prezzoBase10 && quantita10 && totale10) {
+            document.getElementById("prezzoBase10").value = prezzoBase10;
+            document.getElementById("quantita10").value = quantita10;
+            document.getElementById("totale10").value = totale10;
+        }
+
+        if (prezzoBase11 && quantita11 && totale11) {
+            document.getElementById("prezzoBase11").value = prezzoBase11;
+            document.getElementById("quantita11").value = quantita11;
+            document.getElementById("totale11").value = totale11;
+        }
+
+        // Caricamento dei dati per la riga 12
+        if (prezzoBase12 && quantita12 && totale12) {
+            document.getElementById("prezzoBase12").value = prezzoBase12;
+            document.getElementById("quantita12").value = quantita12;
+            document.getElementById("totale12").value = totale12;
+        }
+
+    // Carica il totale complessivo
+    var totaleComplessivo = localStorage.getItem("totaleComplessivo");
+    if (totaleComplessivo) {
+        document.getElementById("totaleComplessivo").value = totaleComplessivo;
+    }
+}
+
+// Carica i dati all'avvio della pagina
+window.onload = function() {
+    caricaDati();
+}
+</script>
+
+<!-- CSS per personalizzare l'aspetto degli input -->-
+<style>
+  /* Aggiungi uno sfondo trasparente e testo bianco */
+  input[type="text"], input[type="number"] {
+      background-color: transparent; /* Trasparente */
+      color: white; /* Colore del testo bianco */
+      border: 1px solid #ccc; /* Colore del bordo */
+      padding: 8px;
+      font-size: 16px;
+  }
+
+  /* Aggiungi un bordo più chiaro per il focus sugli input */
+  input[type="text"]:focus, input[type="number"]:focus {
+      border: 1px solid #66ccff; /* Azzurro per il focus */
+      outline: none;
+  }
+
+  /* Aggiungi uno stile di bordo per i tasti quando sono disabilitati */
+  input[readonly] {
+      background-color: transparent; /* Trasparente */
+      color: white; /* Colore del testo bianco */
+  }
+  .container {
+    max-width: 500px;
+    margin: 0;
+    background-color: transparent; /* Trasparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 240px;  /* Distanza dal bordo superiore */
+    right: 40px; /* Distanza dal bordo destro */
+    }
+    .container2 {
+    max-width: 500px;
+    margin: 0;
+    background-color: transparent; /* Trasparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 510px;  /* Distanza dal bordo superiore */
+    right: 20px; /* Distanza dal bordo destro */
+    }        
+</style>
+
+ <!-- FINE TABELLA LISTINO PREZZI -->
+
+
+
+ <div class="container">
+    <h1>Soldi Puliti</h1>
+    <label for="money-input">Scrivi l'importo (Puliti):</label>
+    <input type="text" id="money-input" class="money-box" placeholder="Es. 10.000" readonly />
+    
+    <div class="action-buttons">
+        <label for="custom-amount">Inserisci l'importo (Puliti):</label>
+        <input type="number" id="custom-amount" class="money-box" placeholder="Cifra personalizzata" />
+    </div>
+
+    <div class="action-buttons">
+        <button id="add-custom">Aggiungi cifra (Puliti)</button>
+        <button id="remove-custom">Rimuovi cifra (Puliti)</button>
+    </div>
+
+    <div class="button-container">
+        <button id="save-button">Salva (Puliti)</button>
+    </div>
+</div>
+
+<div class="container2">
+    <h1>Soldi Sporchi</h1>
+    <label for="dirty-money-input">Scrivi l'importo (Sporchi):</label>
+    <input type="text" id="dirty-money-input" class="money-box" placeholder="Es. 10.000" readonly />
+    
+    <div class="action-buttons">
+        <label for="dirty-custom-amount">Inserisci l'importo (Sporchi):</label>
+        <input type="number" id="dirty-custom-amount" class="money-box" placeholder="Cifra personalizzata" />
+    </div>
+
+    <div class="action-buttons">
+        <button id="add-dirty-custom">Aggiungi cifra (Sporchi)</button>
+        <button id="remove-dirty-custom">Rimuovi cifra (Sporchi)</button>
+    </div>
+
+    <div class="button-container">
+        <button id="save-dirty-button">Salva (Sporchi)</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Variabili per Soldi Puliti
+        const moneyInput = document.getElementById('money-input');
+        const customAmountInput = document.getElementById('custom-amount');
+        const addCustomButton = document.getElementById('add-custom');
+        const removeCustomButton = document.getElementById('remove-custom');
+        const saveButton = document.getElementById('save-button');
+
+        let currentMoney = parseInt(localStorage.getItem('soldiPuliti')) || 0; // Recupera il valore salvato o imposta a 0
+
+        function updateMoneyDisplay() {
+            moneyInput.value = currentMoney.toLocaleString();
+        }
+
+        addCustomButton.addEventListener('click', function() {
+            const customAmount = parseInt(customAmountInput.value);
+            if (!isNaN(customAmount) && customAmount > 0) {
+                currentMoney += customAmount;
+                localStorage.setItem('soldiPuliti', currentMoney);
+                updateMoneyDisplay();
+                customAmountInput.value = ''; // Pulisce il campo dopo l'operazione
+            } else {
+                alert('Per favore, inserisci un importo valido.');
+            }
+        });
+
+        removeCustomButton.addEventListener('click', function() {
+            const customAmount = parseInt(customAmountInput.value);
+            if (!isNaN(customAmount) && customAmount > 0) {
+                currentMoney -= customAmount;
+                if (currentMoney < 0) currentMoney = 0; // Impedisce che l'importo scenda sotto 0
+                localStorage.setItem('soldiPuliti', currentMoney);
+                updateMoneyDisplay();
+                customAmountInput.value = ''; // Pulisce il campo dopo l'operazione
+            } else {
+                alert('Per favore, inserisci un importo valido.');
+            }
+        });
+
+        saveButton.addEventListener('click', function() {
+            localStorage.setItem('soldiPuliti', currentMoney);
+            alert('Importo salvato con successo!');
+        });
+
+        updateMoneyDisplay();
+
+        // --- Soldi Sporchi ---
+        
+        const dirtyMoneyInput = document.getElementById('dirty-money-input');
+        const dirtyCustomAmountInput = document.getElementById('dirty-custom-amount');
+        const addDirtyCustomButton = document.getElementById('add-dirty-custom');
+        const removeDirtyCustomButton = document.getElementById('remove-dirty-custom');
+        const saveDirtyButton = document.getElementById('save-dirty-button');
+
+        let currentDirtyMoney = parseInt(localStorage.getItem('soldiSporchi')) || 0; // Recupera il valore salvato o imposta a 0
+
+        function updateDirtyMoneyDisplay() {
+            dirtyMoneyInput.value = currentDirtyMoney.toLocaleString();
+        }
+
+        addDirtyCustomButton.addEventListener('click', function() {
+            const dirtyCustomAmount = parseInt(dirtyCustomAmountInput.value);
+            if (!isNaN(dirtyCustomAmount) && dirtyCustomAmount > 0) {
+                currentDirtyMoney += dirtyCustomAmount;
+                localStorage.setItem('soldiSporchi', currentDirtyMoney);
+                updateDirtyMoneyDisplay();
+                dirtyCustomAmountInput.value = ''; // Pulisce il campo dopo l'operazione
+            } else {
+                alert('Per favore, inserisci un importo valido.');
+            }
+        });
+
+        removeDirtyCustomButton.addEventListener('click', function() {
+            const dirtyCustomAmount = parseInt(dirtyCustomAmountInput.value);
+            if (!isNaN(dirtyCustomAmount) && dirtyCustomAmount > 0) {
+                currentDirtyMoney -= dirtyCustomAmount;
+                if (currentDirtyMoney < 0) currentDirtyMoney = 0; // Impedisce che l'importo scenda sotto 0
+                localStorage.setItem('soldiSporchi', currentDirtyMoney);
+                updateDirtyMoneyDisplay();
+                dirtyCustomAmountInput.value = ''; // Pulisce il campo dopo l'operazione
+            } else {
+                alert('Per favore, inserisci un importo valido.');
+            }
+        });
+
+        saveDirtyButton.addEventListener('click', function() {
+            localStorage.setItem('soldiSporchi', currentDirtyMoney);
+            alert('Importo salvato con successo!');
+        });
+
+        updateDirtyMoneyDisplay();
+    })();
+</script>
